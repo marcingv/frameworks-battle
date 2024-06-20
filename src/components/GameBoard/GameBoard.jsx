@@ -4,7 +4,7 @@ const initialGameBoard = [
   [null, null, null],
 ];
 
-export default function GameBoard({gameTurns = [], activePlayerSymbol, onSelectSquare}) {
+export default function GameBoard({gameTurns = [], onSelectSquare}) {
   const gameBoard = [...initialGameBoard.map((row) => [...row])];
   gameTurns.forEach((oneTurn) => {
     gameBoard[oneTurn.square.row][oneTurn.square.col] = oneTurn.player;
@@ -17,7 +17,7 @@ export default function GameBoard({gameTurns = [], activePlayerSymbol, onSelectS
     }
 
     if (onSelectSquare) {
-      onSelectSquare(activePlayerSymbol, rowIdx, colIdx);
+      onSelectSquare(rowIdx, colIdx);
     }
   }
 
