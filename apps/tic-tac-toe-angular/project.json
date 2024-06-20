@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/tic-tac-toe-angular/src",
-  "tags": [],
+  "tags": ["scope:application", "scope:angular"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
