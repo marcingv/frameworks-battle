@@ -8,7 +8,7 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/tic-tac-toe-react',
 
   server: {
-    port: 4200,
+    port: 4201,
     host: 'localhost',
   },
 
@@ -25,7 +25,7 @@ export default defineConfig({
   // },
 
   build: {
-    outDir: '../../dist/tic-tac-toe-react',
+    outDir: '../../dist/apps/tic-tac-toe-react',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

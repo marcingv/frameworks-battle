@@ -7,6 +7,11 @@
     },
     "lint": {
       "cache": true
+    },
+    "@angular-devkit/build-angular:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"]
     }
   },
   "defaultBase": "master",
@@ -49,6 +54,12 @@
         "style": "css",
         "linter": "eslint"
       }
+    },
+    "@nx/angular:application": {
+      "e2eTestRunner": "none",
+      "linter": "eslint",
+      "style": "css",
+      "unitTestRunner": "jest"
     }
   }
 }
