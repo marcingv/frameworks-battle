@@ -1,0 +1,9 @@
+{
+  "name": "tic-tac-toe-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/tic-tac-toe-react/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project tic-tac-toe-react --web",
+  "targets": {}
+}
