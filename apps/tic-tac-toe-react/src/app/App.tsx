@@ -1,19 +1,17 @@
-import Player from "./components/Player/Player.jsx";
-import GameBoard from "./components/GameBoard/GameBoard.jsx";
-import {useState} from "react";
-import Log from "./components/Log/Log.jsx";
-import {WINNING_COMBINATIONS} from "../winning-combinations.js";
-import GameOver from "./components/GameOver/GameOver.jsx";
+import Player from "./components/Player/Player";
+import GameBoard from "./components/GameBoard/GameBoard";
+import { useState } from "react";
+import Log from "./components/Log/Log";
+import { WINNING_COMBINATIONS } from "../winning-combinations";
+import GameOver from "./components/GameOver/GameOver";
 
-
-
-function App() {
+export function App() {
   const INITIAL_GAME_BOARD = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
   ];
-  const INITIAL_PLAYERS = {X: 'Player 1', O: 'Player 2'};
+  const INITIAL_PLAYERS = { X: 'Player 1', O: 'Player 2' };
 
   const [players, setPlayers] = useState(INITIAL_PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
@@ -65,7 +63,7 @@ function App() {
       const activePlayer = deriveActivePlayer(prevState);
 
       return [
-        {player: activePlayer, square: {row: rowIdx, col: colIdx}},
+        { player: activePlayer, square: { row: rowIdx, col: colIdx } },
         ...prevState,
       ];
     });
@@ -73,7 +71,7 @@ function App() {
 
   function handlePlayerChanged(symbol, name) {
     setPlayers((prevState) => {
-      const newPlayers = {...prevState};
+      const newPlayers = { ...prevState };
       newPlayers[symbol] = name;
 
       return newPlayers;
@@ -81,34 +79,34 @@ function App() {
   }
 
   return (
-    <main>
-      <div id="game-container">
-        <ol id="players" className="highlight-player">
-          <Player
-            name={players['X']}
-            symbol="X"
-            isActive={activePlayer === 'X'}
-            onNameChanged={(name) => handlePlayerChanged('X', name)}/>
+          <main>
+            <div id="game-container">
+              <ol id="players" className="highlight-player">
+                <Player
+                        name={ players['X'] }
+                        symbol="X"
+                        isActive={ activePlayer === 'X' }
+                        onNameChanged={ (name) => handlePlayerChanged('X', name) }/>
 
-          <Player
-            name={players['O']}
-            symbol="O"
-            isActive={activePlayer === 'O'}
-            onNameChanged={(name) => handlePlayerChanged('O', name)}/>
-        </ol>
+                <Player
+                        name={ players['O'] }
+                        symbol="O"
+                        isActive={ activePlayer === 'O' }
+                        onNameChanged={ (name) => handlePlayerChanged('O', name) }/>
+              </ol>
 
-        {
-          (winner || isDraw) &&
-          <GameOver
-            winner={players[winner]}
-            onRematch={handleRematch}></GameOver>
-        }
+              {
+                      (winner || isDraw) &&
+                      <GameOver
+                              winner={ players[winner] }
+                              onRematch={ handleRematch }></GameOver>
+              }
 
-        <GameBoard gameBoard={gameBoard} onSelectSquare={handleSelectSquare}/>
-      </div>
+              <GameBoard gameBoard={ gameBoard } onSelectSquare={ handleSelectSquare }/>
+            </div>
 
-      <Log gameTurns={gameTurns}/>
-    </main>
+            <Log gameTurns={ gameTurns }/>
+          </main>
   );
 }
 
