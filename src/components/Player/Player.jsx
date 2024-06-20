@@ -13,7 +13,6 @@ export default function Player({name, symbol, isActive, onNameChanged}) {
     setIsEditing((prevState) => !prevState);
 
     if (onNameChanged) {
-      console.warn(playerName);
       onNameChanged(playerName);
     }
   }
