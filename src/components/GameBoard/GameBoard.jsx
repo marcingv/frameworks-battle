@@ -1,15 +1,4 @@
-const initialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-
-export default function GameBoard({gameTurns = [], onSelectSquare}) {
-  const gameBoard = [...initialGameBoard.map((row) => [...row])];
-  gameTurns.forEach((oneTurn) => {
-    gameBoard[oneTurn.square.row][oneTurn.square.col] = oneTurn.player;
-  });
-
+export default function GameBoard({gameBoard = [], onSelectSquare}) {
   function handleSelectSquare(rowIdx, colIdx) {
     if (gameBoard[rowIdx][colIdx]) {
       // This cell is already marked by user
