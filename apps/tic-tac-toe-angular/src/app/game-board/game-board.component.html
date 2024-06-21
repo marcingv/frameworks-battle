@@ -1,0 +1,13 @@
+<ol id="game-board">
+  @for (row of gameBoard(); let rowIndex = $index; track rowIndex) {
+    <li>
+      <ol>
+        @for (playerSymbol of row; let colIndex = $index; track colIndex) {
+          <li>
+            <button (click)="handleSelectSquare(rowIndex, colIndex)">{{ playerSymbol }}</button>
+          </li>
+        }
+      </ol>
+    </li>
+  }
+</ol>

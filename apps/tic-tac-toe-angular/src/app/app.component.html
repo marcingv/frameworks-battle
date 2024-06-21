@@ -6,7 +6,7 @@
 <main>
   <div id="game-container">
     <ol id="players" class="highlight-player">
-      <li [ngClass]="{active: true}">
+      <li [ngClass]="{active: activePlayer() === PlayerSymbol.X}">
         <app-player
                 [symbol]="PlayerSymbol.X"
                 [name]="players().X"
@@ -14,7 +14,7 @@
         ></app-player>
       </li>
 
-      <li [ngClass]="{active: false}">
+      <li [ngClass]="{active: activePlayer() === PlayerSymbol.O}">
         <app-player
                 [symbol]="PlayerSymbol.O"
                 [name]="players().O"
@@ -23,7 +23,7 @@
       </li>
     </ol>
 
-    Game board
+    <app-game-board [gameBoard]="gameBoard()" (squareSelected)="onSquareSelected($event)"></app-game-board>
   </div>
 
   LOGS

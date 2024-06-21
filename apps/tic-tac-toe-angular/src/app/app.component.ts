@@ -1,13 +1,23 @@
-import { ChangeDetectionStrategy, Component, signal, WritableSignal } from '@angular/core';
-import { INITIAL_PLAYERS, Players, PlayerSymbol } from "@gv-tic-tac-toe/domain";
+import { ChangeDetectionStrategy, Component, computed, Signal, signal, WritableSignal } from '@angular/core';
+import {
+  deriveActivePlayer,
+  GameBoardGrid,
+  GameTurn,
+  INITIAL_PLAYERS,
+  initializeNewBoard,
+  Players,
+  PlayerSymbol
+} from "@gv-tic-tac-toe/domain";
 import { PlayerComponent } from "./player/player.component";
 import { NgClass } from "@angular/common";
+import { GameBoardComponent } from "./game-board/game-board.component";
 
 @Component({
   standalone: true,
   imports: [
     PlayerComponent,
-    NgClass
+    NgClass,
+    GameBoardComponent
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,6 +28,9 @@ export class AppComponent {
   protected readonly PlayerSymbol = PlayerSymbol;
 
   protected players: WritableSignal<Players> = signal(INITIAL_PLAYERS);
+  protected gameTurns: WritableSignal<GameTurn[]> = signal<GameTurn[]>([]);
+  protected gameBoard: Signal<GameBoardGrid> = computed(() => initializeNewBoard(this.gameTurns()));
+  protected activePlayer: Signal<PlayerSymbol> = computed(() => deriveActivePlayer(this.gameTurns()))
 
   protected onPlayerNameChanged(symbol: PlayerSymbol, newName: string): void {
     this.players.update((prev) => {
@@ -26,5 +39,14 @@ export class AppComponent {
         [symbol]: newName,
       };
     })
+  }
+
+  protected onSquareSelected(event: { rowIndex: number; colIndex: number }): void {
+    this.gameTurns.update((prev) => {
+      return [
+        { player: this.activePlayer(), square: { row: event.rowIndex, col: event.colIndex } },
+        ...prev,
+      ];
+    });
   }
 }
