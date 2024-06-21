@@ -48,7 +48,7 @@ export function App() {
 
   return (<>
     <header>
-      <img src="game-logo.png" alt="Hand-drawn tic tac toe board"/>
+      <img src="/game-logo.png" alt="Hand-drawn tic tac toe board"/>
       <h1>React Tic-Tac-Toe</h1>
     </header>
 
