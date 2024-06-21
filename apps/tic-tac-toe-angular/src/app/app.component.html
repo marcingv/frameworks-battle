@@ -23,6 +23,10 @@
       </li>
     </ol>
 
+    @if (winner() || isDraw()) {
+      <app-game-over [winner]="winnerName()" (onRematch)="startNewGame()"></app-game-over>
+    }
+
     <app-game-board [gameBoard]="gameBoard()" (squareSelected)="onSquareSelected($event)"></app-game-board>
   </div>
 

@@ -3,6 +3,7 @@ import {
   deriveActivePlayer,
   GameBoardGrid,
   GameTurn,
+  getWinner,
   INITIAL_PLAYERS,
   initializeNewBoard,
   Players,
@@ -12,6 +13,7 @@ import { PlayerComponent } from "./player/player.component";
 import { NgClass } from "@angular/common";
 import { GameBoardComponent } from "./game-board/game-board.component";
 import { LogComponent } from "./log/log.component";
+import { GameOverComponent } from "./game-over/game-over.component";
 
 @Component({
   standalone: true,
@@ -19,7 +21,8 @@ import { LogComponent } from "./log/log.component";
     PlayerComponent,
     NgClass,
     GameBoardComponent,
-    LogComponent
+    LogComponent,
+    GameOverComponent
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -33,6 +36,16 @@ export class AppComponent {
   protected gameTurns: WritableSignal<GameTurn[]> = signal<GameTurn[]>([]);
   protected gameBoard: Signal<GameBoardGrid> = computed(() => initializeNewBoard(this.gameTurns()));
   protected activePlayer: Signal<PlayerSymbol> = computed(() => deriveActivePlayer(this.gameTurns()))
+  protected winner: Signal<PlayerSymbol | undefined> = computed(() => getWinner(this.gameBoard()));
+  protected winnerName: Signal<string | undefined> = computed(() => {
+    const symbol = this.winner();
+    if (!symbol) {
+      return undefined;
+    }
+
+    return this.players()[symbol];
+  });
+  protected isDraw: Signal<boolean> = computed(() => this.gameTurns().length === 9 && !this.winner());
 
   protected onPlayerNameChanged(symbol: PlayerSymbol, newName: string): void {
     this.players.update((prev) => {
@@ -50,5 +63,9 @@ export class AppComponent {
         ...prev,
       ];
     });
+  }
+
+  protected startNewGame(): void {
+    this.gameTurns.set([]);
   }
 }
