@@ -11,13 +11,15 @@ import {
 import { PlayerComponent } from "./player/player.component";
 import { NgClass } from "@angular/common";
 import { GameBoardComponent } from "./game-board/game-board.component";
+import { LogComponent } from "./log/log.component";
 
 @Component({
   standalone: true,
   imports: [
     PlayerComponent,
     NgClass,
-    GameBoardComponent
+    GameBoardComponent,
+    LogComponent
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -1,0 +1,7 @@
+<ol id="log">
+  @for(oneTurn of gameTurns(); track oneTurn.square.row + '-' + oneTurn.square.col) {
+    <li>
+      {{ oneTurn.player }} selected {{ oneTurn.square.row }}, {{ oneTurn.square.col }}
+    </li>
+  }
+</ol>
