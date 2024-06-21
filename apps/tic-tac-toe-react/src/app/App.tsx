@@ -46,36 +46,41 @@ export function App() {
     });
   }
 
-  return (
-          <main>
-            <div id="game-container">
-              <ol id="players" className="highlight-player">
-                <Player
-                        name={ players[PlayerSymbol.X] }
-                        symbol={ PlayerSymbol.X }
-                        isActive={ activePlayer === PlayerSymbol.X }
-                        onNameChanged={ (name) => handlePlayerChanged(PlayerSymbol.X, name) }/>
+  return (<>
+    <header>
+      <img src="game-logo.png" alt="Hand-drawn tic tac toe board"/>
+      <h1>React Tic-Tac-Toe</h1>
+    </header>
 
-                <Player
-                        name={ players[PlayerSymbol.O] }
-                        symbol={ PlayerSymbol.O }
-                        isActive={ activePlayer === PlayerSymbol.O }
-                        onNameChanged={ (name) => handlePlayerChanged(PlayerSymbol.O, name) }/>
-              </ol>
+    <main>
+      <div id="game-container">
+        <ol id="players" className="highlight-player">
+          <Player
+                  name={ players[PlayerSymbol.X] }
+                  symbol={ PlayerSymbol.X }
+                  isActive={ activePlayer === PlayerSymbol.X }
+                  onNameChanged={ (name) => handlePlayerChanged(PlayerSymbol.X, name) }/>
 
-              {
-                      (winner || isDraw) &&
-                      <GameOver
-                              winner={ winner ? players[winner] : undefined }
-                              onRematch={ handleRematch }></GameOver>
-              }
+          <Player
+                  name={ players[PlayerSymbol.O] }
+                  symbol={ PlayerSymbol.O }
+                  isActive={ activePlayer === PlayerSymbol.O }
+                  onNameChanged={ (name) => handlePlayerChanged(PlayerSymbol.O, name) }/>
+        </ol>
 
-              <GameBoard gameBoard={ gameBoard } onSelectSquare={ handleSelectSquare }/>
-            </div>
+        {
+                (winner || isDraw) &&
+                <GameOver
+                        winner={ winner ? players[winner] : undefined }
+                        onRematch={ handleRematch }></GameOver>
+        }
 
-            <Log gameTurns={ gameTurns }/>
-          </main>
-  );
+        <GameBoard gameBoard={ gameBoard } onSelectSquare={ handleSelectSquare }/>
+      </div>
+
+      <Log gameTurns={ gameTurns }/>
+    </main>
+  </>);
 }
 
 export default App
