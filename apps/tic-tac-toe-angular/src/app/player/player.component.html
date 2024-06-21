@@ -1,0 +1,11 @@
+<span class="player">
+  @if (isEditing()) {
+    <input [formControl]="formControl" type="text" required/>
+  } @else {
+    <span class="player-name">{{ name() }}</span>
+  }
+
+  <span class="player-symbol">{{ symbol() }}</span>
+</span>
+
+<button (click)="onEditClick()">{{ buttonLabel() }}</button>

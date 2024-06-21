@@ -6,8 +6,21 @@
 <main>
   <div id="game-container">
     <ol id="players" class="highlight-player">
-      <li>P1</li>
-      <li>P2</li>
+      <li [ngClass]="{active: true}">
+        <app-player
+                [symbol]="PlayerSymbol.X"
+                [name]="players().X"
+                (nameChanged)="onPlayerNameChanged(PlayerSymbol.X, $event)"
+        ></app-player>
+      </li>
+
+      <li [ngClass]="{active: false}">
+        <app-player
+                [symbol]="PlayerSymbol.O"
+                [name]="players().O"
+                (nameChanged)="onPlayerNameChanged(PlayerSymbol.O, $event)"
+        ></app-player>
+      </li>
     </ol>
 
     Game board

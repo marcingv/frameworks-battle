@@ -1,3 +1,3 @@
-import { PlayerSymbol } from "../types";
+import { Players } from "../types";
 
-export const INITIAL_PLAYERS: Record<PlayerSymbol, string> = { X: 'Player 1', O: 'Player 2' };
+export const INITIAL_PLAYERS: Players = { X: 'Player 1', O: 'Player 2' };
