@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, InputSignal, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GameBoardGrid } from "@gv-tic-tac-toe/domain";
+import { GameBoardGrid } from "@gv-frameworks-battle/domain";
 
 @Component({
   selector: 'app-game-board',

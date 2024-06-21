@@ -9,7 +9,7 @@ import {
   OutputEmitterRef,
   signal
 } from '@angular/core';
-import { PlayerSymbol } from "@gv-tic-tac-toe/domain";
+import { PlayerSymbol } from "@gv-frameworks-battle/domain";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 @Component({

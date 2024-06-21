@@ -1,4 +1,4 @@
-import { GameBoardGrid, PlayerSymbol } from "@gv-tic-tac-toe/domain";
+import { GameBoardGrid, PlayerSymbol } from "@gv-frameworks-battle/domain";
 
 export default function GameBoard({ gameBoard = [], onSelectSquare }: {
   gameBoard: GameBoardGrid,

@@ -11,7 +11,7 @@ import {
   INITIAL_PLAYERS,
   initializeNewBoard,
   PlayerSymbol
-} from "@gv-tic-tac-toe/domain";
+} from "@gv-frameworks-battle/domain";
 
 
 export function App() {

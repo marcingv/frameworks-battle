@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { PlayerSymbol } from "@gv-tic-tac-toe/domain";
+import { PlayerSymbol } from "@gv-frameworks-battle/domain";
 
 export default function Player({ name, symbol, isActive, onNameChanged }: {
   name: string,

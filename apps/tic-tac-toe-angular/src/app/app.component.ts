@@ -8,7 +8,7 @@ import {
   initializeNewBoard,
   Players,
   PlayerSymbol
-} from "@gv-tic-tac-toe/domain";
+} from "@gv-frameworks-battle/domain";
 import { PlayerComponent } from "./player/player.component";
 import { NgClass } from "@angular/common";
 import { GameBoardComponent } from "./game-board/game-board.component";

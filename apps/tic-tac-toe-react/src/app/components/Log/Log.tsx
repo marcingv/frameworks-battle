@@ -1,4 +1,4 @@
-import { GameTurn } from "@gv-tic-tac-toe/domain";
+import { GameTurn } from "@gv-frameworks-battle/domain";
 
 export default function Log({ gameTurns = [] }: { gameTurns: GameTurn[] }) {
   return (<ol id="log">
