@@ -1,5 +1,10 @@
-export default function GameBoard({gameBoard = [], onSelectSquare}) {
-  function handleSelectSquare(rowIdx, colIdx) {
+import { GameBoardGrid, PlayerSymbol } from "@gv-tic-tac-toe/domain";
+
+export default function GameBoard({ gameBoard = [], onSelectSquare }: {
+  gameBoard: GameBoardGrid,
+  onSelectSquare: (row: number, col: number) => void
+}) {
+  function handleSelectSquare(rowIdx: number, colIdx: number) {
     if (gameBoard[rowIdx][colIdx]) {
       // This cell is already marked by user
       return;
@@ -11,22 +16,22 @@ export default function GameBoard({gameBoard = [], onSelectSquare}) {
   }
 
   return (
-    <ol id="game-board">
-      {
-        gameBoard.map((row, rowIndex) => {
-          return <li key={rowIndex}>
-            <ol>{
-              row.map((playerSymbol, colIndex) => {
-                return <li key={colIndex}>
-                  <button onClick={() => handleSelectSquare(rowIndex, colIndex)} disabled={!!playerSymbol}>
-                    {playerSymbol}
-                  </button>
+          <ol id="game-board">
+            {
+              gameBoard.map((row: Array<PlayerSymbol | null>, rowIndex: number) => {
+                return <li key={ rowIndex }>
+                  <ol>{
+                    row.map((playerSymbol: PlayerSymbol | null, colIndex: number) => {
+                      return <li key={ colIndex }>
+                        <button onClick={ () => handleSelectSquare(rowIndex, colIndex) } disabled={ !!playerSymbol }>
+                          { playerSymbol }
+                        </button>
+                      </li>
+                    })
+                  }</ol>
                 </li>
               })
-            }</ol>
-          </li>
-        })
-      }
-    </ol>
+            }
+          </ol>
   );
 }

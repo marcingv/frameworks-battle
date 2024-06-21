@@ -1,1 +1,2 @@
-export * from './lib/types/player-symbol';
+export * from './lib/types';
+export * from './lib/data';

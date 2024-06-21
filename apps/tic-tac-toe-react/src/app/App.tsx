@@ -2,27 +2,27 @@ import Player from "./components/Player/Player";
 import GameBoard from "./components/GameBoard/GameBoard";
 import { useState } from "react";
 import Log from "./components/Log/Log";
-import { WINNING_COMBINATIONS } from "../winning-combinations";
 import GameOver from "./components/GameOver/GameOver";
-import { PlayerSymbol } from "@gv-tic-tac-toe/domain";
+import {
+  GameBoardGrid,
+  GameTurn,
+  INITIAL_GAME_BOARD,
+  INITIAL_PLAYERS,
+  PlayerSymbol,
+  WINNING_COMBINATIONS
+} from "@gv-tic-tac-toe/domain";
+
 
 export function App() {
-  const INITIAL_GAME_BOARD = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ];
-  const INITIAL_PLAYERS: Record<PlayerSymbol, string> = { X: 'Player 1', O: 'Player 2' };
-
   const [players, setPlayers] = useState(INITIAL_PLAYERS);
-  const [gameTurns, setGameTurns] = useState([]);
-  const gameBoard = initializeNewBoard(gameTurns);
-  const activePlayer = deriveActivePlayer(gameTurns);
-  const winner = getWinner(gameBoard);
-  const isDraw = gameTurns.length === 9 && !winner;
+  const [gameTurns, setGameTurns] = useState<GameTurn[]>([]);
+  const gameBoard: GameBoardGrid = initializeNewBoard(gameTurns);
+  const activePlayer: PlayerSymbol = deriveActivePlayer(gameTurns);
+  const winner: PlayerSymbol | undefined = getWinner(gameBoard);
+  const isDraw: boolean = gameTurns.length === 9 && !winner;
 
 
-  function getWinner(gameBoard) {
+  function getWinner(gameBoard: GameBoardGrid): PlayerSymbol | undefined {
     let winner = undefined;
 
     for (const combination of WINNING_COMBINATIONS) {
@@ -38,7 +38,7 @@ export function App() {
     return winner;
   }
 
-  function initializeNewBoard(gameTurns) {
+  function initializeNewBoard(gameTurns: GameTurn[]): GameBoardGrid {
     const board = [...INITIAL_GAME_BOARD.map((row) => [...row])];
     gameTurns.forEach((oneTurn) => {
       board[oneTurn.square.row][oneTurn.square.col] = oneTurn.player;
@@ -47,11 +47,11 @@ export function App() {
     return board;
   }
 
-  function handleRematch() {
+  function handleRematch(): void {
     setGameTurns([]);
   }
 
-  function deriveActivePlayer(gameTurns): PlayerSymbol {
+  function deriveActivePlayer(gameTurns: GameTurn[]): PlayerSymbol {
     if (!gameTurns || !gameTurns.length || gameTurns[0].player === PlayerSymbol.O) {
       return PlayerSymbol.X;
     }
@@ -59,8 +59,8 @@ export function App() {
     return PlayerSymbol.O;
   }
 
-  function handleSelectSquare(rowIdx, colIdx) {
-    setGameTurns((prevState) => {
+  function handleSelectSquare(rowIdx: number, colIdx: number): void {
+    setGameTurns((prevState: GameTurn[]) => {
       const activePlayer = deriveActivePlayer(prevState);
 
       return [
@@ -70,7 +70,7 @@ export function App() {
     });
   }
 
-  function handlePlayerChanged(symbol, name) {
+  function handlePlayerChanged(symbol: PlayerSymbol, name: string): void {
     setPlayers((prevState) => {
       const newPlayers = { ...prevState };
       newPlayers[symbol] = name;
@@ -99,7 +99,7 @@ export function App() {
               {
                       (winner || isDraw) &&
                       <GameOver
-                              winner={ players[winner] }
+                              winner={ winner ? players[winner] : undefined }
                               onRematch={ handleRematch }></GameOver>
               }
 
