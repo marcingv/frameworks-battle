@@ -1,0 +1,19 @@
+{
+  "name": "investment-calculator-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/investment-calculator/domain/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/investment-calculator/domain",
+        "main": "libs/investment-calculator/domain/src/index.ts",
+        "tsConfig": "libs/investment-calculator/domain/tsconfig.lib.json",
+        "assets": ["libs/investment-calculator/domain/*.md"]
+      }
+    }
+  }
+}
