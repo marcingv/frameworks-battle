@@ -5,7 +5,7 @@ export function Header() {
     <div id="header">
       <img src={headerImg} alt="Investment Calculator" />
 
-      <h1>Investment Calculator</h1>
+      <h1>React Investment Calculator</h1>
     </div>
   );
 }
