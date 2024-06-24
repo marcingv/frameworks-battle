@@ -28,3 +28,4 @@ dist-ssr
 .nx/cache
 .nx/workspace-data
 .angular
+/tmp

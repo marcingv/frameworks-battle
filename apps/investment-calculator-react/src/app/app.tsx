@@ -1,13 +1,7 @@
 import './app.css';
 
-import NxWelcome from './nx-welcome';
-
 export function App() {
-  return (
-    <div>
-      <NxWelcome title="investment-calculator-react" />
-    </div>
-  );
+  return <h1>React Investment Calculator</h1>;
 }
 
 export default App;
