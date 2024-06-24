@@ -6,16 +6,11 @@ import { useState } from 'react';
 import {
   CalcParams,
   calculateInvestmentResults,
+  INITIAL_CALC_PARAMS,
   InvestmentRecord,
 } from '@gv-frameworks-battle/investment-calculator-domain';
 
 export function App() {
-  const INITIAL_CALC_PARAMS: Partial<CalcParams> = {
-    initialInvestment: 15000,
-    annualInvestment: 900,
-    expectedReturn: 6,
-    duration: 10,
-  };
   const [calcParams, setCalcParams] = useState<Partial<CalcParams>>(INITIAL_CALC_PARAMS);
   let formError: string | null = null;
   const results: InvestmentRecord[] | null = validate(calcParams)
@@ -46,7 +41,7 @@ export function App() {
   return (
     <>
       <Header />
-      <CalcForm userInput={calcParams ?? INITIAL_CALC_PARAMS} onUserInputChange={(params) => setCalcParams(params)} />
+      <CalcForm userInput={calcParams} onUserInputChange={(params) => setCalcParams(params)} />
 
       {formError && <p className="center">{formError}</p>}
       {results && <ResultsTable data={results} />}

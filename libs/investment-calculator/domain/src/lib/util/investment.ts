@@ -29,6 +29,24 @@ export function calculateInvestmentResults({
   return annualData;
 }
 
+export function calculateInitialInvestment(records: InvestmentRecord[]): number {
+  if (!records.length) {
+    return 0;
+  }
+
+  return records[0].valueEndOfYear - records[0].interest - records[0].annualInvestment;
+}
+
+export function calculateTotalInterest(data: InvestmentRecord[], currentYear: InvestmentRecord): number {
+  return (
+    currentYear.valueEndOfYear - currentYear.annualInvestment * currentYear.year - calculateInitialInvestment(data)
+  );
+}
+
+export function totalCapitalInvestment(data: InvestmentRecord[], currentYear: InvestmentRecord): number {
+  return currentYear.valueEndOfYear - calculateTotalInterest(data, currentYear);
+}
+
 // The browser-provided Intl API is used to prepare a formatter object
 // This object offers a "format()" method that can be used to format numbers as currency
 // Example Usage: formatter.format(1000) => yields "$1,000"
