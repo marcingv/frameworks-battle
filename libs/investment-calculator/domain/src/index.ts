@@ -1,1 +1,1 @@
-export * from './lib/investment-calculator-domain';
+export * from './lib/util';
