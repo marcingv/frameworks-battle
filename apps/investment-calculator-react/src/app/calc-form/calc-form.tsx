@@ -1,23 +1,20 @@
 import { CalcParams } from '@gv-frameworks-battle/investment-calculator-domain';
 
 export function CalcForm({
-  params,
-  paramsChanged,
+  userInput = {},
+  onUserInputChange,
 }: {
-  params: CalcParams | null;
-  paramsChanged: ((params: CalcParams) => void) | undefined;
+  userInput: Partial<CalcParams>;
+  onUserInputChange?: (params: Partial<CalcParams>) => void;
 }) {
-  const userInput: Partial<CalcParams> = { ...(params ?? {}) };
-
   function handleInputChange(param: keyof CalcParams, newValue: number): void {
     const newUserInput = {
       ...userInput,
       [param]: newValue,
     };
 
-    const params: CalcParams = newUserInput as CalcParams;
-    if (paramsChanged) {
-      paramsChanged(params);
+    if (onUserInputChange) {
+      onUserInputChange(newUserInput);
     }
   }
 
@@ -28,7 +25,6 @@ export function CalcForm({
           <label>Initial Investment</label>
           <input
             type="number"
-            min={0}
             required
             value={userInput.initialInvestment ?? ''}
             onChange={(e) => handleInputChange('initialInvestment', +e.target.value)}
@@ -39,7 +35,6 @@ export function CalcForm({
           <label>Annual Investment</label>
           <input
             type="number"
-            min={0}
             required
             value={userInput.annualInvestment ?? ''}
             onChange={(e) => handleInputChange('annualInvestment', +e.target.value)}
@@ -52,7 +47,6 @@ export function CalcForm({
           <label>Expected Return</label>
           <input
             type="number"
-            min={0}
             required
             value={userInput.expectedReturn ?? ''}
             onChange={(e) => handleInputChange('expectedReturn', +e.target.value)}
@@ -68,10 +62,6 @@ export function CalcForm({
             value={userInput.duration ?? ''}
             onChange={(e) => handleInputChange('duration', +e.target.value)}
           />
-
-          {userInput.duration !== undefined && userInput.duration < 1 ? (
-            <small>Duration has to be greater than 0.</small>
-          ) : null}
         </div>
       </div>
     </div>

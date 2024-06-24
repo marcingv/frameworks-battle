@@ -10,29 +10,33 @@ import {
 } from '@gv-frameworks-battle/investment-calculator-domain';
 
 export function App() {
-  const INITIAL_CALC_PARAMS: CalcParams | null = {
+  const INITIAL_CALC_PARAMS: Partial<CalcParams> = {
     initialInvestment: 15000,
     annualInvestment: 900,
     expectedReturn: 6,
     duration: 10,
   };
-  const [calcParams, setCalcParams] = useState<CalcParams | null>(INITIAL_CALC_PARAMS);
-  const isUserInputValid = validateParams(calcParams ?? {});
-  const results: InvestmentRecord[] | null =
-    isUserInputValid && calcParams ? calculateInvestmentResults(calcParams) : null;
+  const [calcParams, setCalcParams] = useState<Partial<CalcParams>>(INITIAL_CALC_PARAMS);
+  let formError: string | null = null;
+  const results: InvestmentRecord[] | null = validate(calcParams)
+    ? calculateInvestmentResults(calcParams as CalcParams)
+    : null;
 
-  function handleCalcParamsChanged(params: CalcParams): void {
-    setCalcParams(params);
-  }
-
-  function validateParams(params: Partial<CalcParams>): boolean {
+  function validate(params: Partial<CalcParams>): boolean {
     if (
       params.initialInvestment === undefined ||
       params.annualInvestment === undefined ||
       params.expectedReturn === undefined ||
-      params.duration === undefined ||
-      params.duration < 1
+      params.duration === undefined
     ) {
+      formError = 'Please fill the form.';
+
+      return false;
+    }
+
+    if (params.duration < 1) {
+      formError = 'Duration should be grater than 0.';
+
       return false;
     }
 
@@ -42,8 +46,9 @@ export function App() {
   return (
     <>
       <Header />
-      <CalcForm params={calcParams} paramsChanged={(params) => handleCalcParamsChanged(params)} />
+      <CalcForm userInput={calcParams ?? INITIAL_CALC_PARAMS} onUserInputChange={(params) => setCalcParams(params)} />
 
+      {formError && <p className="center">{formError}</p>}
       {results && <ResultsTable data={results} />}
     </>
   );
