@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "resolveJsonModule": true,
     "paths": {
-      "@gv-frameworks-battle/domain": ["libs/shared/domain/src/index.ts"]
+      "@gv-frameworks-battle/tic-tac-toe-domain": ["libs/tic-tac-toe/domain/src/index.ts"]
     }
   }
 }

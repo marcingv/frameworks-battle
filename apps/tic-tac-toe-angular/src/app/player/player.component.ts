@@ -1,23 +1,22 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed, HostBinding,
+  computed,
+  HostBinding,
   input,
   InputSignal,
   OnChanges,
   output,
   OutputEmitterRef,
-  signal
+  signal,
 } from '@angular/core';
-import { PlayerSymbol } from "@gv-frameworks-battle/domain";
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { PlayerSymbol } from '@gv-frameworks-battle/tic-tac-toe-domain';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-player',
   standalone: true,
-  imports: [
-    ReactiveFormsModule
-  ],
+  imports: [ReactiveFormsModule],
   templateUrl: './player.component.html',
   styleUrl: './player.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,7 +28,7 @@ export class PlayerComponent implements OnChanges {
   public nameChanged: OutputEmitterRef<string> = output<string>();
 
   protected isEditing = signal<boolean>(false);
-  protected buttonLabel = computed(() => this.isEditing() ? 'Save' : 'Edit');
+  protected buttonLabel = computed(() => (this.isEditing() ? 'Save' : 'Edit'));
 
   protected formControl = new FormControl<string>('');
 

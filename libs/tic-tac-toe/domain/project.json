@@ -1,0 +1,19 @@
+{
+  "name": "tic-tac-toe-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/tic-tac-toe/domain/src",
+  "projectType": "library",
+  "tags": ["scope:shared"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/tic-tac-toe/domain",
+        "main": "libs/tic-tac-toe/domain/src/index.ts",
+        "tsConfig": "libs/tic-tac-toe/domain/tsconfig.lib.json",
+        "assets": ["libs/tic-tac-toe/domain/*.md"]
+      }
+    }
+  }
+}

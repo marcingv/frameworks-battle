@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GameTurn } from "@gv-frameworks-battle/domain";
+import { GameTurn } from '@gv-frameworks-battle/tic-tac-toe-domain';
 
 @Component({
   selector: 'app-log',

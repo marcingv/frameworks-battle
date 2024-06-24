@@ -1,5 +1,5 @@
-import { GameBoardGrid, GameTurn, PlayerSymbol } from "../types";
-import { INITIAL_GAME_BOARD, WINNING_COMBINATIONS } from "../data";
+import { GameBoardGrid, GameTurn, PlayerSymbol } from '../types';
+import { INITIAL_GAME_BOARD, WINNING_COMBINATIONS } from '../data';
 
 export function initializeNewBoard(gameTurns: GameTurn[]): GameBoardGrid {
   const board = [...INITIAL_GAME_BOARD.map((row) => [...row])];
