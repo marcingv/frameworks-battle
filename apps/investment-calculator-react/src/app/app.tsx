@@ -10,19 +10,33 @@ import {
 } from '@gv-frameworks-battle/investment-calculator-domain';
 
 export function App() {
-  let calcParams: CalcParams | null = {
+  const INITIAL_CALC_PARAMS: CalcParams | null = {
     initialInvestment: 15000,
     annualInvestment: 900,
     expectedReturn: 6,
     duration: 10,
   };
-  const [results, setResults] = useState<InvestmentRecord[] | null>(
-    calcParams ? calculateInvestmentResults(calcParams) : null
-  );
+  const [calcParams, setCalcParams] = useState<CalcParams | null>(INITIAL_CALC_PARAMS);
+  const isUserInputValid = validateParams(calcParams ?? {});
+  const results: InvestmentRecord[] | null =
+    isUserInputValid && calcParams ? calculateInvestmentResults(calcParams) : null;
 
   function handleCalcParamsChanged(params: CalcParams): void {
-    calcParams = params;
-    setResults(calculateInvestmentResults(params));
+    setCalcParams(params);
+  }
+
+  function validateParams(params: Partial<CalcParams>): boolean {
+    if (
+      params.initialInvestment === undefined ||
+      params.annualInvestment === undefined ||
+      params.expectedReturn === undefined ||
+      params.duration === undefined ||
+      params.duration < 1
+    ) {
+      return false;
+    }
+
+    return true;
   }
 
   return (

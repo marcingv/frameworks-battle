@@ -1,5 +1,4 @@
 import { CalcParams } from '@gv-frameworks-battle/investment-calculator-domain';
-import { useState } from 'react';
 
 export function CalcForm({
   params,
@@ -8,24 +7,13 @@ export function CalcForm({
   params: CalcParams | null;
   paramsChanged: ((params: CalcParams) => void) | undefined;
 }) {
-  const [userInput, setUserInput] = useState<Partial<CalcParams>>(params ?? {});
+  const userInput: Partial<CalcParams> = { ...(params ?? {}) };
 
   function handleInputChange(param: keyof CalcParams, newValue: number): void {
     const newUserInput = {
       ...userInput,
       [param]: newValue,
     };
-
-    setUserInput(newUserInput);
-
-    if (
-      newUserInput.initialInvestment === undefined ||
-      newUserInput.annualInvestment === undefined ||
-      newUserInput.expectedReturn === undefined ||
-      newUserInput.duration === undefined
-    ) {
-      return;
-    }
 
     const params: CalcParams = newUserInput as CalcParams;
     if (paramsChanged) {
