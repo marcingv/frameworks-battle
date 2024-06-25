@@ -1,13 +1,15 @@
 import './app.css';
+import Header from './components/header';
+import AuthInputs from './components/auth-inputs';
 
 export function App() {
   return (
-    <div>
-      <h1>
-        <span> Hello there, </span>
-        Welcome styling-react 👋
-      </h1>
-    </div>
+    <>
+      <Header />
+      <main>
+        <AuthInputs />
+      </main>
+    </>
   );
 }
 
