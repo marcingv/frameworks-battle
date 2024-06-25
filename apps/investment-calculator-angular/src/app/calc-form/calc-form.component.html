@@ -1,25 +1,25 @@
-<div id="user-input">
+<div id="user-input" [formGroup]="formGroup">
   <div class="input-group">
     <div>
       <label>Initial Investment</label>
-      <input type="number" required/>
+      <input [formControl]="formGroup.controls.initialInvestment" type="number" />
     </div>
 
     <div>
       <label>Annual Investment</label>
-      <input type="number" required/>
+      <input [formControl]="formGroup.controls.annualInvestment" type="number" />
     </div>
   </div>
 
   <div class="input-group">
     <div>
       <label>Expected Return</label>
-      <input type="number" required/>
+      <input [formControl]="formGroup.controls.expectedReturn" type="number" />
     </div>
 
     <div>
       <label>Duration</label>
-      <input type="number" min="0" required/>
+      <input [formControl]="formGroup.controls.duration" type="number" min="0" />
     </div>
   </div>
 </div>

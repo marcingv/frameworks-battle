@@ -1,5 +1,11 @@
 <app-header></app-header>
 
-<app-calc-form></app-calc-form>
+<app-calc-form [(userInput)]="initialCalcParams" (onFormStateChange)="formStateChanged($event)"></app-calc-form>
 
-<app-results-table></app-results-table>
+@if (formError()) {
+  <p class="center">{{ formError() }}</p>
+}
+
+@if (investmentsData(); as data) {
+  <app-results-table [data]="data"></app-results-table>
+}
