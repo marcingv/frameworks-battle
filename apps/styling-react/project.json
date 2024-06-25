@@ -1,0 +1,9 @@
+{
+  "name": "styling-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/styling-react/src",
+  "projectType": "application",
+  "tags": ["scope:application", "scope:react"],
+  "// targets": "to see all targets run: nx show project styling-react --web",
+  "targets": {}
+}
