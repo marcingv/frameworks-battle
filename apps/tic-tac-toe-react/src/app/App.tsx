@@ -1,8 +1,8 @@
-import Player from "./components/Player/Player";
-import GameBoard from "./components/GameBoard/GameBoard";
-import { useState } from "react";
-import Log from "./components/Log/Log";
-import GameOver from "./components/GameOver/GameOver";
+import Player from './components/Player/Player';
+import GameBoard from './components/GameBoard/GameBoard';
+import { useState } from 'react';
+import Log from './components/Log/Log';
+import GameOver from './components/GameOver/GameOver';
 import {
   deriveActivePlayer,
   GameBoardGrid,
@@ -10,9 +10,8 @@ import {
   getWinner,
   INITIAL_PLAYERS,
   initializeNewBoard,
-  PlayerSymbol
-} from "@gv-frameworks-battle/domain";
-
+  PlayerSymbol,
+} from '@gv-frameworks-battle/tic-tac-toe-domain';
 
 export function App() {
   const [players, setPlayers] = useState(INITIAL_PLAYERS);
@@ -30,10 +29,7 @@ export function App() {
     setGameTurns((prevState: GameTurn[]) => {
       const activePlayer = deriveActivePlayer(prevState);
 
-      return [
-        { player: activePlayer, square: { row: rowIdx, col: colIdx } },
-        ...prevState,
-      ];
+      return [{ player: activePlayer, square: { row: rowIdx, col: colIdx } }, ...prevState];
     });
   }
 
@@ -46,41 +42,42 @@ export function App() {
     });
   }
 
-  return (<>
-    <header>
-      <img src="/game-logo.png" alt="Hand-drawn tic tac toe board"/>
-      <h1>React Tic-Tac-Toe</h1>
-    </header>
+  return (
+    <>
+      <header>
+        <img src="/game-logo.png" alt="Hand-drawn tic tac toe board" />
+        <h1>React Tic-Tac-Toe</h1>
+      </header>
 
-    <main>
-      <div id="game-container">
-        <ol id="players" className="highlight-player">
-          <Player
-                  name={ players[PlayerSymbol.X] }
-                  symbol={ PlayerSymbol.X }
-                  isActive={ activePlayer === PlayerSymbol.X }
-                  onNameChanged={ (name) => handlePlayerChanged(PlayerSymbol.X, name) }/>
+      <main>
+        <div id="game-container">
+          <ol id="players" className="highlight-player">
+            <Player
+              name={players[PlayerSymbol.X]}
+              symbol={PlayerSymbol.X}
+              isActive={activePlayer === PlayerSymbol.X}
+              onNameChanged={(name) => handlePlayerChanged(PlayerSymbol.X, name)}
+            />
 
-          <Player
-                  name={ players[PlayerSymbol.O] }
-                  symbol={ PlayerSymbol.O }
-                  isActive={ activePlayer === PlayerSymbol.O }
-                  onNameChanged={ (name) => handlePlayerChanged(PlayerSymbol.O, name) }/>
-        </ol>
+            <Player
+              name={players[PlayerSymbol.O]}
+              symbol={PlayerSymbol.O}
+              isActive={activePlayer === PlayerSymbol.O}
+              onNameChanged={(name) => handlePlayerChanged(PlayerSymbol.O, name)}
+            />
+          </ol>
 
-        {
-                (winner || isDraw) &&
-                <GameOver
-                        winner={ winner ? players[winner] : undefined }
-                        onRematch={ handleRematch }></GameOver>
-        }
+          {(winner || isDraw) && (
+            <GameOver winner={winner ? players[winner] : undefined} onRematch={handleRematch}></GameOver>
+          )}
 
-        <GameBoard gameBoard={ gameBoard } onSelectSquare={ handleSelectSquare }/>
-      </div>
+          <GameBoard gameBoard={gameBoard} onSelectSquare={handleSelectSquare} />
+        </div>
 
-      <Log gameTurns={ gameTurns }/>
-    </main>
-  </>);
+        <Log gameTurns={gameTurns} />
+      </main>
+    </>
+  );
 }
 
-export default App
+export default App;

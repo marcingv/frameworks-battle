@@ -1,0 +1,22 @@
+<table id="result">
+  <thead>
+  <tr>
+    <th>Year</th>
+    <th>Investment Value</th>
+    <th>Interest (Year)</th>
+    <th>Total Interest</th>
+    <th>Invested Capital</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (record of data(); track record.year) {
+      <tr>
+        <td>{{ record.year }}</td>
+        <td>{{ record.valueEndOfYear | currency:'USD':'symbol':'0.0-0' }}</td>
+        <td>{{ record.interest | currency:'USD':'symbol':'0.0-0' }}</td>
+        <td>{{ calculateTotalInterest(data(), record) | currency:'USD':'symbol':'0.0-0' }}</td>
+        <td>{{ totalCapitalInvestment(data(), record) | currency:'USD':'symbol':'0.0-0' }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

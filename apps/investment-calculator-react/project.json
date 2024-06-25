@@ -1,0 +1,9 @@
+{
+  "name": "investment-calculator-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/investment-calculator-react/src",
+  "projectType": "application",
+  "tags": ["scope:application", "scope:react"],
+  "// targets": "to see all targets run: nx show project investment-calculator-react --web",
+  "targets": {}
+}

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, InputSignal, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GameBoardGrid } from "@gv-frameworks-battle/domain";
+import { GameBoardGrid } from '@gv-frameworks-battle/tic-tac-toe-domain';
 
 @Component({
   selector: 'app-game-board',
@@ -13,7 +13,7 @@ import { GameBoardGrid } from "@gv-frameworks-battle/domain";
 export class GameBoardComponent {
   public gameBoard: InputSignal<GameBoardGrid> = input.required<GameBoardGrid>();
 
-  public squareSelected = output<{ rowIndex: number, colIndex: number }>();
+  public squareSelected = output<{ rowIndex: number; colIndex: number }>();
 
   public handleSelectSquare(rowIndex: number, colIndex: number): void {
     if (this.gameBoard()[rowIndex][colIndex]) {
@@ -24,6 +24,6 @@ export class GameBoardComponent {
     this.squareSelected.emit({
       rowIndex: rowIndex,
       colIndex: colIndex,
-    })
+    });
   }
 }
