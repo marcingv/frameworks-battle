@@ -33,7 +33,7 @@ export default function LabeledInput({
   return (
     <p>
       <Label $invalid={invalid}>{label}</Label>
-      <Input type="email" $invalid={invalid} {...props} />
+      <Input $invalid={invalid} {...props} />
     </p>
   );
 }

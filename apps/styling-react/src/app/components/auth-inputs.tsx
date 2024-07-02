@@ -53,12 +53,14 @@ export default function AuthInputs() {
       <ControlContainer>
         <LabeledInput
           label="Email"
+          type="email"
           invalid={emailNotValid}
           onChange={(event) => handleInputChange('email', event.target.value)}
         />
 
         <LabeledInput
           label="Password"
+          type="password"
           invalid={passwordNotValid}
           onChange={(event) =>
             handleInputChange('password', event.target.value)
