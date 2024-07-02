@@ -1,0 +1,16 @@
+<div class="auth-inputs">
+  <div class="control-container">
+    <app-labeled-input label="Email">
+      <input type="email" [formControl]="emailCtrl" />
+    </app-labeled-input>
+
+    <app-labeled-input label="Password">
+      <input type="password" [formControl]="passwordCtrl" />
+    </app-labeled-input>
+  </div>
+
+  <div class="actions">
+    <button appButton="text-button" type="button">Create a new account</button>
+    <button appButton="button" (click)="submit()">Sign In</button>
+  </div>
+</div>
