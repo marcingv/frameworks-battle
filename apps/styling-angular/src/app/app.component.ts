@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HeaderComponent } from './header/header.component';
+import { AuthInputsComponent } from './auth-inputs/auth-inputs.component';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent],
+  imports: [HeaderComponent, AuthInputsComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = 'styling-angular';
-}
+export class AppComponent {}
