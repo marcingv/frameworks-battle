@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+const StyledAuthInputs = styled.div`
+  width: 100%;
+  max-width: 28rem;
+  padding: 2rem;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  background: linear-gradient(180deg, #474232 0%, #28271c 100%);
+  color: white;
+`;
+
 const ControlContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,6 +40,35 @@ const Input = styled.input<{ $invalid?: boolean }>`
   background-color: ${({ $invalid }) => ($invalid ? '#fed2d2' : '#d1d5db')};
 `;
 
+const Actions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+`;
+
+const Button = styled.button`
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #1f2937;
+  background-color: #f0b322;
+  border-radius: 6px;
+  border: none;
+
+  &:hover {
+    background-color: #f0920e;
+  }
+`;
+
+const TextButton = styled.button`
+  color: #f0b322;
+  border: none;
+
+  &:hover {
+    color: #f0920e;
+  }
+`;
+
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
@@ -50,7 +90,7 @@ export default function AuthInputs() {
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
   return (
-    <div id="auth-inputs">
+    <StyledAuthInputs>
       <ControlContainer>
         <p>
           <Label $invalid={emailNotValid}>Email</Label>
@@ -71,14 +111,10 @@ export default function AuthInputs() {
           />
         </p>
       </ControlContainer>
-      <div className="actions">
-        <button type="button" className="text-button">
-          Create a new account
-        </button>
-        <button className="button" onClick={handleLogin}>
-          Sign In
-        </button>
-      </div>
-    </div>
+      <Actions>
+        <TextButton type="button">Create a new account</TextButton>
+        <Button onClick={handleLogin}>Sign In</Button>
+      </Actions>
+    </StyledAuthInputs>
   );
 }
