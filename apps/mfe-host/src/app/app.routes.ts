@@ -5,6 +5,7 @@ import {
   WebComponentWrapper,
   WebComponentWrapperOptions,
 } from '@angular-architects/module-federation-tools';
+import { LOADED_REMOTE_DEFINITIONS } from '../loaded-remotes-definitions';
 
 export const appRoutes: Route[] = [
   {
@@ -23,7 +24,10 @@ export const appRoutes: Route[] = [
     component: WebComponentWrapper,
     data: {
       type: 'module',
-      remoteEntry: 'http://localhost:4303/remoteEntry.js',
+      // remoteEntry: 'http://localhost:4303/remoteEntry.js',
+      remoteEntry: `${
+        LOADED_REMOTE_DEFINITIONS.getDefinitions()['mf-1-react']
+      }/remoteEntry.js`,
       exposedModule: './Module',
       elementName: 'mf1-react-element',
     } satisfies WebComponentWrapperOptions,
