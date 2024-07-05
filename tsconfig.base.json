@@ -21,6 +21,9 @@
       ],
       "@gv-frameworks-battle/tic-tac-toe-domain": [
         "libs/tic-tac-toe/domain/src/index.ts"
+      ],
+      "styling-angular/Routes": [
+        "apps/styling-angular/src/app/remote-entry/entry.routes.ts"
       ]
     }
   }
