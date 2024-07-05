@@ -1,0 +1,87 @@
+{
+  "name": "mf-1-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mf-1-react/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/mf-1-react",
+        "index": "apps/mf-1-react/src/index.html",
+        "baseHref": "/",
+        "main": "apps/mf-1-react/src/main.ts",
+        "tsConfig": "apps/mf-1-react/tsconfig.app.json",
+        "assets": [
+          "apps/mf-1-react/src/favicon.ico",
+          "apps/mf-1-react/src/assets"
+        ],
+        "styles": ["apps/mf-1-react/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/mf-1-react/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/mf-1-react/src/environments/environment.ts",
+              "with": "apps/mf-1-react/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/mf-1-react/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "mf-1-react:build",
+        "hmr": true,
+        "port": 4303
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "mf-1-react:build:development"
+        },
+        "production": {
+          "buildTarget": "mf-1-react:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "mf-1-react:build",
+        "watch": false,
+        "port": 4303
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "mf-1-react:build:development"
+        },
+        "production": {
+          "buildTarget": "mf-1-react:build:production"
+        }
+      }
+    }
+  }
+}

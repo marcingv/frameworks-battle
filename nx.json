@@ -17,7 +17,8 @@
   "targetDefaults": {
     "build": {
       "outputs": ["{projectRoot}/dist"],
-      "cache": true
+      "cache": true,
+      "dependsOn": ["^build"]
     },
     "lint": {
       "cache": true
@@ -38,6 +39,15 @@
       "inputs": ["production", "^production"]
     },
     "@nx/angular:webpack-browser": {
+      "inputs": [
+        "production",
+        "^production",
+        {
+          "env": "NX_MF_DEV_SERVER_STATIC_REMOTES"
+        }
+      ]
+    },
+    "@nx/webpack:webpack": {
       "inputs": [
         "production",
         "^production",
