@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "scripts": {},
   "dependencies": {
+    "@angular-architects/module-federation-runtime": "^18.0.4",
+    "@angular-architects/module-federation-tools": "^18.0.4",
     "@angular/animations": "~18.0.0",
     "@angular/common": "~18.0.0",
     "@angular/compiler": "~18.0.0",
