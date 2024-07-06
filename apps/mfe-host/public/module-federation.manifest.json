@@ -1,4 +1,5 @@
 {
   "styling-angular": "http://localhost:4203",
-  "mf-1-react": "http://localhost:4303"
+  "styling-react": "http://localhost:4303",
+  "mf-1-react": "http://localhost:4300"
 }

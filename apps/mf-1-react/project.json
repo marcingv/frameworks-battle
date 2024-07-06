@@ -54,7 +54,7 @@
       "options": {
         "buildTarget": "mf-1-react:build",
         "hmr": true,
-        "port": 4303
+        "port": 4300
       },
       "configurations": {
         "development": {
@@ -72,7 +72,7 @@
       "options": {
         "buildTarget": "mf-1-react:build",
         "watch": false,
-        "port": 4303
+        "port": 4300
       },
       "configurations": {
         "development": {

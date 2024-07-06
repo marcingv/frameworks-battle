@@ -5,5 +5,24 @@
   "projectType": "application",
   "tags": ["scope:application", "scope:react"],
   "// targets": "to see all targets run: nx show project styling-react --web",
-  "targets": {}
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run styling-react:build:production --watch",
+          "nx run styling-react:preview:production"
+        ],
+        "port": 4303
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "styling-react:vite:build",
+        "watch": false,
+        "port": 4303
+      }
+    }
+  }
 }

@@ -31,12 +31,11 @@ export const appRoutes: Route[] = [
         component: WebComponentWrapper,
         data: {
           type: 'module',
-          // remoteEntry: 'http://localhost:4303/remoteEntry.js',
           remoteEntry: `${
-            LOADED_REMOTE_DEFINITIONS.getDefinitions()['mf-1-react']
-          }/remoteEntry.js`,
+            LOADED_REMOTE_DEFINITIONS.getDefinitions()['styling-react']
+          }/assets/remoteEntry.js`,
           exposedModule: './Module',
-          elementName: 'mf1-react-element',
+          elementName: 'styling-react-app-element',
         } satisfies WebComponentWrapperOptions,
       },
     ],
@@ -53,7 +52,7 @@ export const appRoutes: Route[] = [
     component: WebComponentWrapper,
     data: {
       type: 'module',
-      // remoteEntry: 'http://localhost:4303/remoteEntry.js',
+      // remoteEntry: 'http://localhost:4300/remoteEntry.js',
       remoteEntry: `${
         LOADED_REMOTE_DEFINITIONS.getDefinitions()['mf-1-react']
       }/remoteEntry.js`,
