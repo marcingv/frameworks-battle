@@ -7,12 +7,7 @@
   "// targets": "to see all targets run: nx show project styling-react --web",
   "targets": {
     "serve": {
-      "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "nx run styling-react:build:production --watch",
-          "nx run styling-react:preview:production"
-        ],
         "port": 4303
       }
     },
