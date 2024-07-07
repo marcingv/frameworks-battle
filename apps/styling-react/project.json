@@ -6,8 +6,20 @@
   "tags": ["scope:application", "scope:react"],
   "// targets": "to see all targets run: nx show project styling-react --web",
   "targets": {
-    "serve": {
+    "dev": {
+      "executor": "nx:run-commands",
       "options": {
+        "command": "vite",
+        "cwd": "apps/styling-react"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run styling-react:vite:build --watch",
+          "nx run styling-react:vite:preview"
+        ],
         "port": 4303
       }
     },
