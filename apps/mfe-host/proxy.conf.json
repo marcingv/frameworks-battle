@@ -22,5 +22,9 @@
   "/styling-angular-assets": {
     "target": "http://localhost:4203",
     "secure": false
+  },
+  "/countdown-game-react-assets": {
+    "target": "http://localhost:4304",
+    "secure": false
   }
 }

@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
@@ -18,9 +20,15 @@
         "tsConfig": "apps/countdown-game-react/tsconfig.app.json",
         "assets": [
           "apps/countdown-game-react/src/favicon.ico",
-          "apps/countdown-game-react/src/assets"
+          {
+            "glob": "**/*",
+            "input": "apps/countdown-game-react/src/assets",
+            "output": "/countdown-game-react-assets/"
+          }
         ],
-        "styles": ["apps/countdown-game-react/src/styles.css"],
+        "styles": [
+          "apps/countdown-game-react/src/styles.css"
+        ],
         "scripts": [],
         "webpackConfig": "apps/countdown-game-react/webpack.config.ts"
       },
@@ -53,7 +61,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "countdown-game-react:build",
-        "hmr": true,
+        "hmr": false,
+        "watch": true,
         "port": 4304
       },
       "configurations": {
