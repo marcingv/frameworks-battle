@@ -9,9 +9,11 @@ import {
   INITIAL_CALC_PARAMS,
   InvestmentRecord,
 } from '@gv-frameworks-battle/investment-calculator-domain';
+import { createRoot } from 'react-dom/client';
 
 export function App() {
-  const [calcParams, setCalcParams] = useState<Partial<CalcParams>>(INITIAL_CALC_PARAMS);
+  const [calcParams, setCalcParams] =
+    useState<Partial<CalcParams>>(INITIAL_CALC_PARAMS);
   let formError: string | null = null;
   const results: InvestmentRecord[] | null = validate(calcParams)
     ? calculateInvestmentResults(calcParams as CalcParams)
@@ -41,12 +43,38 @@ export function App() {
   return (
     <>
       <Header />
-      <CalcForm userInput={calcParams} onUserInputChange={(params) => setCalcParams(params)} />
+      <CalcForm
+        userInput={calcParams}
+        onUserInputChange={(params) => setCalcParams(params)}
+      />
 
       {formError && <p className="center">{formError}</p>}
       {results && <ResultsTable data={results} />}
     </>
   );
 }
+
+class InvestmentCalculatorReactAppElement extends HTMLElement {
+  public connectedCallback(): void {
+    console.warn(
+      'InvestmentCalculatorReactAppElement is connected: boostrap.tsx'
+    );
+
+    // ReactDOM.render(<App />, this);
+    const root = createRoot(this);
+    root.render(<App />);
+  }
+
+  public disconnectedCallback(): void {
+    console.warn(
+      'InvestmentCalculatorReactAppElement is disconnected: boostrap.tsx'
+    );
+  }
+}
+
+customElements.define(
+  'investment-calculator-react-app-element',
+  InvestmentCalculatorReactAppElement
+);
 
 export default App;

@@ -14,6 +14,35 @@ export const appRoutes: Route[] = [
     component: NxWelcomeComponent,
   },
   {
+    path: 'investment-calculator',
+    component: FrameworksCompareLayoutComponent,
+    children: [
+      // {
+      //   path: '',
+      //   outlet: 'angular-outlet',
+      //   loadChildren: () =>
+      //     loadRemoteModule('styling-angular', './Routes').then(
+      //       (m) => m.remoteRoutes
+      //     ),
+      // },
+      {
+        path: '',
+        outlet: 'react-outlet',
+        component: WebComponentWrapper,
+        data: {
+          type: 'module',
+          remoteEntry: `${
+            LOADED_REMOTE_DEFINITIONS.getDefinitions()[
+              'investment-calculator-react'
+            ]
+          }/assets/remoteEntry.js`,
+          exposedModule: './Module',
+          elementName: 'investment-calculator-react-app-element',
+        } satisfies WebComponentWrapperOptions,
+      },
+    ],
+  },
+  {
     path: 'styling',
     component: FrameworksCompareLayoutComponent,
     children: [
