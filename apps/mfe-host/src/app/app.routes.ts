@@ -17,14 +17,14 @@ export const appRoutes: Route[] = [
     path: 'investment-calculator',
     component: FrameworksCompareLayoutComponent,
     children: [
-      // {
-      //   path: '',
-      //   outlet: 'angular-outlet',
-      //   loadChildren: () =>
-      //     loadRemoteModule('styling-angular', './Routes').then(
-      //       (m) => m.remoteRoutes
-      //     ),
-      // },
+      {
+        path: '',
+        outlet: 'angular-outlet',
+        loadChildren: () =>
+          loadRemoteModule('investment-calculator-angular', './Routes').then(
+            (m) => m.remoteRoutes
+          ),
+      },
       {
         path: '',
         outlet: 'react-outlet',
