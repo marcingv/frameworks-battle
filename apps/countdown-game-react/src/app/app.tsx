@@ -1,14 +1,21 @@
 import { createRoot } from 'react-dom/client';
 import Player from './components/player';
-import styled from 'styled-components';
-
-const AppContainer = styled.div``;
+import { AppContainer } from './app-container';
 
 export function App() {
   return (
     <AppContainer>
-      <Player />
-      <div id="challenges"></div>
+      <div id="modal"></div>
+      <div id="content">
+        <header>
+          <h1>
+            The <em>Almost</em> Final Countdown
+          </h1>
+          <p>Stop the timer once you estimate that time is (almost) up</p>
+        </header>
+        <Player />
+        <div id="challenges"></div>
+      </div>
     </AppContainer>
   );
 }
