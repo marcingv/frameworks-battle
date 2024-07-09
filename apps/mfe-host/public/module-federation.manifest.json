@@ -1,4 +1,5 @@
 {
+  "tic-tac-toe-angular": "http://localhost:4201",
   "tic-tac-toe-react": "http://localhost:4301",
   "investment-calculator-angular": "http://localhost:4202",
   "investment-calculator-react": "http://localhost:4302",

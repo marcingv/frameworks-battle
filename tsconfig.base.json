@@ -28,6 +28,9 @@
       "mf-1-react/Module": ["apps/mf-1-react/src/remote-entry.ts"],
       "styling-angular/Routes": [
         "apps/styling-angular/src/app/remote-entry/entry.routes.ts"
+      ],
+      "tic-tac-toe-angular/Routes": [
+        "apps/tic-tac-toe-angular/src/app/remote-entry/entry.routes.ts"
       ]
     }
   }

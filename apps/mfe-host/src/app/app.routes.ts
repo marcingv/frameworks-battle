@@ -17,14 +17,14 @@ export const appRoutes: Route[] = [
     path: 'tic-tac-toe',
     component: FrameworksCompareLayoutComponent,
     children: [
-      // {
-      //   path: '',
-      //   outlet: 'angular-outlet',
-      //   loadChildren: () =>
-      //     loadRemoteModule('investment-calculator-angular', './Routes').then(
-      //       (m) => m.remoteRoutes
-      //     ),
-      // },
+      {
+        path: '',
+        outlet: 'angular-outlet',
+        loadChildren: () =>
+          loadRemoteModule('tic-tac-toe-angular', './Routes').then(
+            (m) => m.remoteRoutes
+          ),
+      },
       {
         path: '',
         outlet: 'react-outlet',
