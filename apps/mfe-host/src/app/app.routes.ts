@@ -33,7 +33,7 @@ export const appRoutes: Route[] = [
           type: 'module',
           remoteEntry: `${
             LOADED_REMOTE_DEFINITIONS.getDefinitions()['styling-react']
-          }/assets/remoteEntry.js`,
+          }/styling-react-assets/remoteEntry.js`,
           exposedModule: './Module',
           elementName: 'styling-react-app-element',
         } satisfies WebComponentWrapperOptions,

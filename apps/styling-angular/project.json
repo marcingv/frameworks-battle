@@ -18,7 +18,8 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/styling-angular/public"
+            "input": "apps/styling-angular/public",
+            "output": "/styling-angular-assets/"
           }
         ],
         "styles": ["apps/styling-angular/src/styles.css"],

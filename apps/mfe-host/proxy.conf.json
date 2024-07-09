@@ -1,0 +1,10 @@
+{
+  "/styling-react-assets": {
+    "target": "http://localhost:4303",
+    "secure": false
+  },
+  "/styling-angular-assets": {
+    "target": "http://localhost:4203",
+    "secure": false
+  }
+}
