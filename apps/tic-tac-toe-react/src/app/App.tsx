@@ -12,6 +12,7 @@ import {
   initializeNewBoard,
   PlayerSymbol,
 } from '@gv-frameworks-battle/tic-tac-toe-domain';
+import { createRoot } from 'react-dom/client';
 
 export function App() {
   const [players, setPlayers] = useState(INITIAL_PLAYERS);
@@ -29,7 +30,10 @@ export function App() {
     setGameTurns((prevState: GameTurn[]) => {
       const activePlayer = deriveActivePlayer(prevState);
 
-      return [{ player: activePlayer, square: { row: rowIdx, col: colIdx } }, ...prevState];
+      return [
+        { player: activePlayer, square: { row: rowIdx, col: colIdx } },
+        ...prevState,
+      ];
     });
   }
 
@@ -56,22 +60,32 @@ export function App() {
               name={players[PlayerSymbol.X]}
               symbol={PlayerSymbol.X}
               isActive={activePlayer === PlayerSymbol.X}
-              onNameChanged={(name) => handlePlayerChanged(PlayerSymbol.X, name)}
+              onNameChanged={(name) =>
+                handlePlayerChanged(PlayerSymbol.X, name)
+              }
             />
 
             <Player
               name={players[PlayerSymbol.O]}
               symbol={PlayerSymbol.O}
               isActive={activePlayer === PlayerSymbol.O}
-              onNameChanged={(name) => handlePlayerChanged(PlayerSymbol.O, name)}
+              onNameChanged={(name) =>
+                handlePlayerChanged(PlayerSymbol.O, name)
+              }
             />
           </ol>
 
           {(winner || isDraw) && (
-            <GameOver winner={winner ? players[winner] : undefined} onRematch={handleRematch}></GameOver>
+            <GameOver
+              winner={winner ? players[winner] : undefined}
+              onRematch={handleRematch}
+            ></GameOver>
           )}
 
-          <GameBoard gameBoard={gameBoard} onSelectSquare={handleSelectSquare} />
+          <GameBoard
+            gameBoard={gameBoard}
+            onSelectSquare={handleSelectSquare}
+          />
         </div>
 
         <Log gameTurns={gameTurns} />
@@ -79,5 +93,24 @@ export function App() {
     </>
   );
 }
+
+class TicTacToeReactAppElement extends HTMLElement {
+  public connectedCallback(): void {
+    console.warn('TicTacToeReactAppElement is connected: boostrap.tsx');
+
+    // ReactDOM.render(<App />, this);
+    const root = createRoot(this);
+    root.render(<App />);
+  }
+
+  public disconnectedCallback(): void {
+    console.warn('TicTacToeReactAppElement is disconnected: boostrap.tsx');
+  }
+}
+
+customElements.define(
+  'tic-tac-toe-react-app-element',
+  TicTacToeReactAppElement
+);
 
 export default App;

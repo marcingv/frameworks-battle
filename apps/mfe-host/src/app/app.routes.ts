@@ -14,6 +14,33 @@ export const appRoutes: Route[] = [
     component: NxWelcomeComponent,
   },
   {
+    path: 'tic-tac-toe',
+    component: FrameworksCompareLayoutComponent,
+    children: [
+      // {
+      //   path: '',
+      //   outlet: 'angular-outlet',
+      //   loadChildren: () =>
+      //     loadRemoteModule('investment-calculator-angular', './Routes').then(
+      //       (m) => m.remoteRoutes
+      //     ),
+      // },
+      {
+        path: '',
+        outlet: 'react-outlet',
+        component: WebComponentWrapper,
+        data: {
+          type: 'module',
+          remoteEntry: `${
+            LOADED_REMOTE_DEFINITIONS.getDefinitions()['tic-tac-toe-react']
+          }/assets/remoteEntry.js`,
+          exposedModule: './Module',
+          elementName: 'tic-tac-toe-react-app-element',
+        } satisfies WebComponentWrapperOptions,
+      },
+    ],
+  },
+  {
     path: 'investment-calculator',
     component: FrameworksCompareLayoutComponent,
     children: [
