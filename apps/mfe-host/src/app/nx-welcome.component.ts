@@ -40,8 +40,6 @@ import { CommonModule } from '@angular/common';
       ::after {
         box-sizing: border-box;
         border-width: 0;
-        border-style: solid;
-        border-color: currentColor;
       }
       h1,
       h2 {

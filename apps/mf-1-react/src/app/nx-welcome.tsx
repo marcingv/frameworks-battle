@@ -37,8 +37,6 @@ export function NxWelcome({ title }: { title: string }) {
     ::after {
       box-sizing: border-box;
       border-width: 0;
-      border-style: solid;
-      border-color: currentColor;
     }
     h1,
     h2 {

@@ -41,13 +41,6 @@ export const appRoutes: Route[] = [
     ],
   },
   {
-    path: 'styling-angular',
-    loadChildren: () =>
-      loadRemoteModule('styling-angular', './Routes').then(
-        (m) => m.remoteRoutes
-      ),
-  },
-  {
     path: 'mf-1-react',
     component: WebComponentWrapper,
     data: {
