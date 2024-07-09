@@ -1,0 +1,42 @@
+.framework-header {
+  @apply p-4 bg-gray-50 text-center font-bold text-slate-600;
+}
+
+.framework-app {
+  @apply bg-red-200 min-h-[85vh];
+  @apply flex flex-col items-stretch content-stretch;
+}
+
+/* Angular app viewport */
+:host ::ng-deep {
+  .framework-app ng-component {
+    @apply flex flex-col flex-1;
+  }
+
+  .framework-app ng-component > *:not(router-outlet) {
+    @apply flex flex-col flex-1;
+  }
+
+  .framework-app ng-component app-root {
+    @apply flex flex-col flex-1;
+  }
+}
+
+/* React app viewport */
+:host ::ng-deep {
+  .framework-app mft-wc-wrapper {
+    @apply flex flex-col flex-1;
+  }
+
+  .framework-app mft-wc-wrapper > div {
+    @apply flex flex-col flex-1;
+  }
+
+  .framework-app mft-wc-wrapper > div > * {
+    @apply flex flex-col flex-1;
+  }
+
+  .framework-app mft-wc-wrapper > div > * > * {
+    @apply flex flex-col flex-1;
+  }
+}

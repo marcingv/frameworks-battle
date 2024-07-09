@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import federation from '@originjs/vite-plugin-federation';
 
 export default defineConfig({
   root: __dirname,
@@ -13,11 +14,22 @@ export default defineConfig({
   },
 
   preview: {
-    port: 4300,
+    port: 4303,
     host: 'localhost',
   },
 
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [
+    react(),
+    nxViteTsPaths(),
+    federation({
+      name: 'styling-react',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Module': './src/app/app.tsx',
+      },
+      // shared: ['react', 'react-dom'],
+    }),
+  ],
 
   // Uncomment this if you are using workers.
   // worker: {
@@ -26,6 +38,7 @@ export default defineConfig({
 
   build: {
     outDir: '../../dist/apps/styling-react',
+    assetsDir: 'styling-react-assets',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
