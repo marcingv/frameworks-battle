@@ -3,6 +3,10 @@
     "target": "http://localhost:4302",
     "secure": false
   },
+  "/investment-calculator-angular-assets": {
+    "target": "http://localhost:4202",
+    "secure": false
+  },
   "/styling-react-assets": {
     "target": "http://localhost:4303",
     "secure": false

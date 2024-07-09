@@ -18,7 +18,8 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/investment-calculator-angular/public"
+            "input": "apps/investment-calculator-angular/public",
+            "output": "/investment-calculator-angular-assets/"
           }
         ],
         "styles": ["apps/investment-calculator-angular/src/styles.css"],
