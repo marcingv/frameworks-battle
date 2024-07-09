@@ -5,7 +5,28 @@
     <title>tic-tac-toe-angular</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/game-logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/tic-tac-toe-angular-assets/game-logo.png" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      app-tic-tac-toe-angular-entry {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      app-root {
+        flex: 1;
+      }
+    </style>
   </head>
   <body>
     <app-tic-tac-toe-angular-entry></app-tic-tac-toe-angular-entry>

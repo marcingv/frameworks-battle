@@ -3,6 +3,10 @@
     "target": "http://localhost:4301",
     "secure": false
   },
+  "/tic-tac-toe-angular-assets": {
+    "target": "http://localhost:4201",
+    "secure": false
+  },
   "/investment-calculator-react-assets": {
     "target": "http://localhost:4302",
     "secure": false

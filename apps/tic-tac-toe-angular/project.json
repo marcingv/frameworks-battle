@@ -18,7 +18,8 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/tic-tac-toe-angular/public"
+            "input": "apps/tic-tac-toe-angular/public",
+            "output": "/tic-tac-toe-angular-assets/"
           }
         ],
         "styles": ["apps/tic-tac-toe-angular/src/styles.css"],
