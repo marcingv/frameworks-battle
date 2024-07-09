@@ -27,6 +27,7 @@ const AppContainer = styled.div`
   }
 
   #header img {
+    display: inline-block;
     width: 5rem;
     height: 5rem;
     object-fit: contain;

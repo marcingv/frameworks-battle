@@ -38,6 +38,7 @@ export default defineConfig({
 
   build: {
     outDir: '../../dist/apps/investment-calculator-react',
+    assetsDir: 'investment-calculator-react-assets',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

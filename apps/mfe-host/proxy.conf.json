@@ -1,4 +1,8 @@
 {
+  "/investment-calculator-react-assets": {
+    "target": "http://localhost:4302",
+    "secure": false
+  },
   "/styling-react-assets": {
     "target": "http://localhost:4303",
     "secure": false

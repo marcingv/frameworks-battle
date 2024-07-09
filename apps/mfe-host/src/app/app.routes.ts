@@ -35,7 +35,7 @@ export const appRoutes: Route[] = [
             LOADED_REMOTE_DEFINITIONS.getDefinitions()[
               'investment-calculator-react'
             ]
-          }/assets/remoteEntry.js`,
+          }/investment-calculator-react-assets/remoteEntry.js`,
           exposedModule: './Module',
           elementName: 'investment-calculator-react-app-element',
         } satisfies WebComponentWrapperOptions,
