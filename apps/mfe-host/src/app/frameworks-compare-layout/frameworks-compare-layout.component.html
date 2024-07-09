@@ -1,10 +1,16 @@
-<div style="display: flex">
-  <div style="flex: 1; background: orange">
-    A
-    <router-outlet name="angular-outlet"></router-outlet>
+<div class="flex gap-4">
+  <div class="flex-1">
+    <div class="framework-header">Angular</div>
+
+    <div class="framework-app">
+      <router-outlet name="angular-outlet"></router-outlet>
+    </div>
   </div>
-  <div style="flex: 1; background: pink">
-    B
-    <router-outlet name="react-outlet"></router-outlet>
+  <div class="flex-1">
+    <div class="framework-header">React</div>
+
+    <div class="framework-app">
+      <router-outlet name="react-outlet"></router-outlet>
+    </div>
   </div>
 </div>

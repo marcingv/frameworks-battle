@@ -1,0 +1,11 @@
+.remote-menu {
+  @apply flex gap-4 mb-4 border-b-4;
+}
+
+.remote-menu a {
+  @apply block p-4 bg-gray-50 hover:bg-gray-100 text-gray-400;
+}
+
+.remote-menu a.active {
+  @apply underline text-gray-600;
+}

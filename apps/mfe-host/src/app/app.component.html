@@ -1,8 +1,8 @@
 <ul class="remote-menu">
-  <li><a routerLink="/">Home</a></li>
-  <li><a routerLink="/styling">Styling</a></li>
-  <li><a routerLink="/styling-angular">Styling Angular</a></li>
-  <li><a routerLink="/mf-1-react">MF 1 React</a></li>
+  <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+  <li><a routerLink="/styling" routerLinkActive="active">Styling</a></li>
+  <li><a routerLink="/styling-angular" routerLinkActive="active">Styling Angular</a></li>
+  <li><a routerLink="/mf-1-react" routerLinkActive="active">MF 1 React</a></li>
 </ul>
 
 <router-outlet></router-outlet>
