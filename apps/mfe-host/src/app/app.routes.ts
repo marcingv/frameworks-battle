@@ -33,7 +33,7 @@ export const appRoutes: Route[] = [
           type: 'module',
           remoteEntry: `${
             LOADED_REMOTE_DEFINITIONS.getDefinitions()['tic-tac-toe-react']
-          }/assets/remoteEntry.js`,
+          }/tic-tac-toe-react-assets/remoteEntry.js`,
           exposedModule: './Module',
           elementName: 'tic-tac-toe-react-app-element',
         } satisfies WebComponentWrapperOptions,

@@ -14,6 +14,7 @@ import {
 } from '@gv-frameworks-battle/tic-tac-toe-domain';
 import { createRoot } from 'react-dom/client';
 import { AppContainer } from './AppContainer';
+import logo from '../../public/game-logo.png';
 
 export function App() {
   const [players, setPlayers] = useState(INITIAL_PLAYERS);
@@ -50,7 +51,7 @@ export function App() {
   return (
     <AppContainer>
       <header>
-        <img src="/game-logo.png" alt="Hand-drawn tic tac toe board" />
+        <img src={logo} alt="Hand-drawn tic tac toe board" />
         <h1>React Tic-Tac-Toe</h1>
       </header>
 

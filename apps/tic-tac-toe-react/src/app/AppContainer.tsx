@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import bgPattern from '../../public/bg-pattern-dark.png';
 
 export const AppContainer = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Slab:wght@400;700&display=swap');
@@ -20,7 +21,8 @@ export const AppContainer = styled.div`
       rgba(241, 210, 70, 0.98),
       rgba(250, 176, 103, 0.87)
     ),
-    url('/bg-pattern-dark.png');
+    url(${bgPattern});
+
   background-repeat: repeat;
   background-size: 100% 100%, 30% 30%, 100% 100%;
   min-height: 110rem;

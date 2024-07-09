@@ -38,6 +38,7 @@ export default defineConfig({
 
   build: {
     outDir: '../../dist/apps/tic-tac-toe-react',
+    assetsDir: 'tic-tac-toe-react-assets',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

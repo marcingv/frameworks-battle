@@ -1,4 +1,8 @@
 {
+  "/tic-tac-toe-react-assets": {
+    "target": "http://localhost:4301",
+    "secure": false
+  },
   "/investment-calculator-react-assets": {
     "target": "http://localhost:4302",
     "secure": false
