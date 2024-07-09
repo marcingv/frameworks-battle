@@ -1,8 +1,16 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createRoot } from 'react-dom/client';
+import Player from './components/player';
+import styled from 'styled-components';
+
+const AppContainer = styled.div``;
 
 export function App() {
-  return <div>HELLO FROM COUNTDOWN GAME :) :) :)</div>;
+  return (
+    <AppContainer>
+      <Player />
+      <div id="challenges"></div>
+    </AppContainer>
+  );
 }
 
 class CountdownGameReactAppElement extends HTMLElement {
