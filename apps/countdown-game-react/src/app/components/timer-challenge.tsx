@@ -3,46 +3,67 @@ import ResultModal, { ResultModalRef } from './result-modal';
 
 export default function TimerChallenge({
   title,
-  targetTime,
+  targetTimeSecs,
 }: {
   title: string;
-  targetTime: number;
+  targetTimeSecs: number;
 }) {
   const [timerStarted, setTimerStarted] = useState(false);
-  const [timerExpired, setTimerExpired] = useState(false);
 
-  const timer = useRef<NodeJS.Timeout | null>(null);
+  const startTime = useRef<number | null>(null);
+  const stopTime = useRef<number | null>(null);
+  const timeout = useRef<NodeJS.Timeout | null>(null);
   const dialog = useRef<ResultModalRef>(null);
+  const targetTimeMillis: number = targetTimeSecs * 1000;
+
+  let durationTimeMillis: number | undefined;
+  if (startTime.current && stopTime.current) {
+    durationTimeMillis = stopTime.current - startTime.current;
+  }
+
+  let remainingTimeMillis: number | undefined;
+  if (durationTimeMillis !== undefined) {
+    remainingTimeMillis = targetTimeMillis - durationTimeMillis;
+  }
+
+  if (remainingTimeMillis !== undefined && dialog.current) {
+    dialog.current.open();
+  }
 
   function handleStart(): void {
     setTimerStarted(true);
-    setTimerExpired(false);
 
-    timer.current = setTimeout(() => {
-      setTimerStarted(false);
-      setTimerExpired(true);
-    }, targetTime * 1000);
+    startTime.current = Date.now();
+    stopTime.current = null;
+
+    timeout.current = setTimeout(() => {
+      stopTimer();
+    }, targetTimeMillis);
   }
 
   function handleStop(): void {
-    clearTimeout(timer.current ?? undefined);
+    stopTimer();
+  }
+
+  function stopTimer(): void {
+    clearTimeout(timeout.current ?? undefined);
 
     setTimerStarted(false);
-    setTimerExpired(false);
-
-    dialog.current?.open();
+    stopTime.current = Date.now();
   }
 
   return (
     <>
-      <ResultModal ref={dialog} result="lost" targetTime={targetTime} />
+      <ResultModal
+        ref={dialog}
+        targetTimeMillis={targetTimeMillis}
+        remainingTimeMillis={remainingTimeMillis}
+      />
       <section className="challenge">
         <h2>{title}</h2>
 
-        {timerExpired && <p>You lost</p>}
-
         <p className="challenge-time">
-          {targetTime} second{targetTime > 1 ? 's' : ''}
+          {targetTimeSecs} second{targetTimeSecs > 1 ? 's' : ''}
         </p>
 
         <p>
