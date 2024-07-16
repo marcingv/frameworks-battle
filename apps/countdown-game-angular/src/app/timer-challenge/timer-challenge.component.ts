@@ -2,18 +2,21 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   HostBinding,
   input,
   InputSignal,
   Signal,
   signal,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ResultModalComponent } from '../result-modal/result-modal.component';
 
 @Component({
   selector: 'app-timer-challenge',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ResultModalComponent],
   templateUrl: './timer-challenge.component.html',
   styleUrl: './timer-challenge.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,7 +42,8 @@ export class TimerChallengeComponent {
 
     return stop - start;
   });
-  private remainingTimeMillis = computed(() => {
+
+  protected remainingTimeMillis = computed(() => {
     const duration = this.durationTimeMillis();
     if (!duration) {
       return undefined;
@@ -50,9 +54,19 @@ export class TimerChallengeComponent {
 
   private timer?: number;
 
+  @ViewChild(ResultModalComponent) resultModal!: ResultModalComponent;
+
   @HostBinding('class')
   protected get cssClass(): string {
     return 'challenge';
+  }
+
+  public constructor() {
+    // effect(() => {
+    //   if (this.startTime() && this.stopTime() && !this.timerStarted()) {
+    //     this.resultModal.open();
+    //   }
+    // });
   }
 
   protected startTimer(): void {
@@ -77,5 +91,7 @@ export class TimerChallengeComponent {
 
     this.timerStarted.set(false);
     this.stopTime.set(Date.now());
+
+    this.resultModal.open();
   }
 }
