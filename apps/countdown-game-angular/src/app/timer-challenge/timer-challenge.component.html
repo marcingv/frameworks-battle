@@ -5,11 +5,11 @@
 </p>
 
 <p>
-  <button>
-    Start Challenge
+  <button (click)="timerStarted() ? stopTimer() : startTimer()">
+    {{ timerStarted() ? 'Stop' : 'Start' }} Challenge
   </button>
 </p>
 
-<p [ngClass]="{active: false}">
-  Timer inactive
+<p [ngClass]="{active: timerStarted()}">
+  {{ timerStarted() ? 'Time is running...' : 'Timer inactive' }}
 </p>
