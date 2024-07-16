@@ -22,6 +22,9 @@
       "@gv-frameworks-battle/tic-tac-toe-domain": [
         "libs/tic-tac-toe/domain/src/index.ts"
       ],
+      "countdown-game-angular/Routes": [
+        "apps/countdown-game-angular/src/app/remote-entry/entry.routes.ts"
+      ],
       "countdown-game-react/Module": [
         "apps/countdown-game-react/src/remote-entry.ts"
       ],

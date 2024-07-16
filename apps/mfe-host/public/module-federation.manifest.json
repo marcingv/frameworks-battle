@@ -6,5 +6,6 @@
   "styling-angular": "http://localhost:4203",
   "styling-react": "http://localhost:4303",
   "countdown-game-react": "http://localhost:4304",
+  "countdown-game-angular": "http://localhost:4204",
   "mf-1-react": "http://localhost:4300"
 }

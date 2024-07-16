@@ -100,14 +100,14 @@ export const appRoutes: Route[] = [
     path: 'countdown-game',
     component: FrameworksCompareLayoutComponent,
     children: [
-      // {
-      //   path: '',
-      //   outlet: 'angular-outlet',
-      //   loadChildren: () =>
-      //     loadRemoteModule('styling-angular', './Routes').then(
-      //       (m) => m.remoteRoutes
-      //     ),
-      // },
+      {
+        path: '',
+        outlet: 'angular-outlet',
+        loadChildren: () =>
+          loadRemoteModule('countdown-game-angular', './Routes').then(
+            (m) => m.remoteRoutes
+          ),
+      },
       {
         path: '',
         outlet: 'react-outlet',
