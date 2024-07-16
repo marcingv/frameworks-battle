@@ -12,11 +12,12 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResultModalComponent } from '../result-modal/result-modal.component';
+import { TeleportDirective } from '@ngneat/overview';
 
 @Component({
   selector: 'app-timer-challenge',
   standalone: true,
-  imports: [CommonModule, ResultModalComponent],
+  imports: [CommonModule, ResultModalComponent, TeleportDirective],
   templateUrl: './timer-challenge.component.html',
   styleUrl: './timer-challenge.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

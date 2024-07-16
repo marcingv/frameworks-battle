@@ -14,4 +14,4 @@
   {{ timerStarted() ? 'Time is running...' : 'Timer inactive' }}
 </p>
 
-<app-result-modal [targetTimeMillis]="targetTimeMillis()" [remainingTimeMillis]="remainingTimeMillis()"></app-result-modal>
+<app-result-modal *teleportTo="'modal'" [targetTimeMillis]="targetTimeMillis()" [remainingTimeMillis]="remainingTimeMillis()"></app-result-modal>
