@@ -97,6 +97,33 @@ export const appRoutes: Route[] = [
     ],
   },
   {
+    path: 'countdown-game',
+    component: FrameworksCompareLayoutComponent,
+    children: [
+      {
+        path: '',
+        outlet: 'angular-outlet',
+        loadChildren: () =>
+          loadRemoteModule('countdown-game-angular', './Routes').then(
+            (m) => m.remoteRoutes
+          ),
+      },
+      {
+        path: '',
+        outlet: 'react-outlet',
+        component: WebComponentWrapper,
+        data: {
+          type: 'module',
+          remoteEntry: `${
+            LOADED_REMOTE_DEFINITIONS.getDefinitions()['countdown-game-react']
+          }/remoteEntry.js`,
+          exposedModule: './Module',
+          elementName: 'countdown-game-react-app-element',
+        } satisfies WebComponentWrapperOptions,
+      },
+    ],
+  },
+  {
     path: 'mf-1-react',
     component: WebComponentWrapper,
     data: {

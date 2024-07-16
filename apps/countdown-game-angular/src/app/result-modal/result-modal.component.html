@@ -1,0 +1,21 @@
+<dialog #dialog class="result-modal">
+  @if (result() === 'lost') {
+    <h2>You lost</h2>
+  } @else if (result() !== 'lost') {
+    <h2>Your Score: {{ score() }}</h2>
+  }
+
+  <p>
+    The target time was
+    <strong>{{ targetTimeSecs() }} second{{ targetTimeSecs() === 1 ? '' : 's' }}</strong>
+  </p>
+
+  <p>
+    You stopped the timer with
+    <strong>{{ remainingSeconds() }} seconds left.</strong>
+  </p>
+
+  <form method="dialog">
+    <button>Close</button>
+  </form>
+</dialog>

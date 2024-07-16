@@ -1,0 +1,7 @@
+<section id="player">
+  <h2>Welcome {{ playerName ? playerName : 'unknown entity' }}</h2>
+  <p>
+    <input [formControl]="playerNameCtrl" type="text"/>
+    <button (click)="playerName = playerNameCtrl.value; playerNameCtrl.reset()">Set Name</button>
+  </p>
+</section>

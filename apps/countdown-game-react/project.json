@@ -1,0 +1,96 @@
+{
+  "name": "countdown-game-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/countdown-game-react/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/countdown-game-react",
+        "index": "apps/countdown-game-react/src/index.html",
+        "baseHref": "/",
+        "main": "apps/countdown-game-react/src/main.ts",
+        "tsConfig": "apps/countdown-game-react/tsconfig.app.json",
+        "assets": [
+          "apps/countdown-game-react/src/favicon.ico",
+          {
+            "glob": "**/*",
+            "input": "apps/countdown-game-react/src/assets",
+            "output": "/countdown-game-react-assets/"
+          }
+        ],
+        "styles": [
+          "apps/countdown-game-react/src/styles.css"
+        ],
+        "scripts": [],
+        "webpackConfig": "apps/countdown-game-react/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/countdown-game-react/src/environments/environment.ts",
+              "with": "apps/countdown-game-react/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/countdown-game-react/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "countdown-game-react:build",
+        "hmr": false,
+        "watch": true,
+        "port": 4304
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "countdown-game-react:build:development"
+        },
+        "production": {
+          "buildTarget": "countdown-game-react:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "countdown-game-react:build",
+        "watch": false,
+        "port": 4304
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "countdown-game-react:build:development"
+        },
+        "production": {
+          "buildTarget": "countdown-game-react:build:production"
+        }
+      }
+    }
+  }
+}

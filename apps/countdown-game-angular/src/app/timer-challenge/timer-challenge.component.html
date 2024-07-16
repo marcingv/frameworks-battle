@@ -1,0 +1,17 @@
+<h2>{{ title() }}</h2>
+
+<p class="challenge-time">
+  {{ targetTimeSecs() }} second{{ targetTimeSecs() > 1 ? 's' : '' }}
+</p>
+
+<p>
+  <button (click)="timerStarted() ? stopTimer() : startTimer()">
+    {{ timerStarted() ? 'Stop' : 'Start' }} Challenge
+  </button>
+</p>
+
+<p [ngClass]="{active: timerStarted()}">
+  {{ timerStarted() ? 'Time is running...' : 'Timer inactive' }}
+</p>
+
+<app-result-modal *teleportTo="'modal'" [targetTimeMillis]="targetTimeMillis()" [remainingTimeMillis]="remainingTimeMillis()"></app-result-modal>
