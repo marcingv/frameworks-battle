@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, NxWelcomeComponent],
+  imports: [CommonModule, AppComponent],
   selector: 'app-countdown-game-angular-entry',
-  template: `<app-nx-welcome></app-nx-welcome>`,
+  template: ` <app-root></app-root>`,
 })
 export class RemoteEntryComponent {}

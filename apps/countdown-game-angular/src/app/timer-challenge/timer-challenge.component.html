@@ -1,0 +1,15 @@
+<h2>{{ title() }}</h2>
+
+<p class="challenge-time">
+  {{ targetTimeSecs() }} second{{ targetTimeSecs() > 1 ? 's' : '' }}
+</p>
+
+<p>
+  <button>
+    Start Challenge
+  </button>
+</p>
+
+<p [ngClass]="{active: false}">
+  Timer inactive
+</p>
