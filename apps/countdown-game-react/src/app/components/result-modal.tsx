@@ -1,4 +1,12 @@
-import { ForwardedRef, forwardRef, useImperativeHandle, useRef } from 'react';
+import {
+  ForwardedRef,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
+import { createPortal } from 'react-dom';
 
 export interface ResultModalProps {
   targetTimeMillis: number;
@@ -14,6 +22,7 @@ export default forwardRef(function ResultModal(
   { targetTimeMillis, remainingTimeMillis }: ResultModalProps,
   ref: ForwardedRef<ResultModalRef>
 ) {
+  const [domReady, setDomReady] = useState(false);
   const targetTimeSecs = +(targetTimeMillis / 1000).toFixed(0);
   const dialog = useRef<HTMLDialogElement>(null);
   let result: 'won' | 'lost' | undefined;
@@ -43,26 +52,31 @@ export default forwardRef(function ResultModal(
     };
   });
 
-  return (
-    <dialog ref={dialog} className="result-modal">
-      {result === 'lost' && <h2>You lost</h2>}
-      {result !== 'lost' && <h2>Your Score: {score}</h2>}
+  useEffect(() => setDomReady(true), []);
 
-      <p>
-        The target time was{' '}
-        <strong>
-          {targetTimeSecs} second{targetTimeSecs === 1 ? '' : 's'}.
-        </strong>
-      </p>
+  return !domReady
+    ? null
+    : createPortal(
+        <dialog ref={dialog} className="result-modal">
+          {result === 'lost' && <h2>You lost</h2>}
+          {result !== 'lost' && <h2>Your Score: {score}</h2>}
 
-      <p>
-        You stopped the timer with{' '}
-        <strong>{remainingSeconds} seconds left.</strong>
-      </p>
+          <p>
+            The target time was{' '}
+            <strong>
+              {targetTimeSecs} second{targetTimeSecs === 1 ? '' : 's'}.
+            </strong>
+          </p>
 
-      <form method="dialog">
-        <button>Close</button>
-      </form>
-    </dialog>
-  );
+          <p>
+            You stopped the timer with{' '}
+            <strong>{remainingSeconds} seconds left.</strong>
+          </p>
+
+          <form method="dialog">
+            <button>Close</button>
+          </form>
+        </dialog>,
+        document.getElementById('modal')!
+      );
 });
